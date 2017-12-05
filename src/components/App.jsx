@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 /*
 	STEP TWO - import action creator
 */
-import { makeNewNum } from '../ducks/reducer'
+import { makeNewNum, getNewQuote } from '../ducks/reducer'
 
 class App extends Component {
 	render(){
@@ -20,6 +20,14 @@ class App extends Component {
 				*/}
 				<button onClick={this.props.makeNewNum}>new number!</button>
 				{ this.props.num }
+				<button onClick={this.props.getNewQuote}>new quote!</button>
+				{/*
+					notice in our browser that for a second the word 
+					'pending' appears where we render our quote? That's 
+					because redux is updating the quote property with the string
+					'pending' while it waits for a response from the API
+				*/}
+				{ this.props.quote }
 			</div>
 
 		)
@@ -31,7 +39,8 @@ class App extends Component {
 	want connected to redux
 */
 let outputActions = {
-	makeNewNum
+	makeNewNum,
+	getNewQuote
 }
 
 /*
@@ -46,7 +55,7 @@ function mapStoreToProps(store) {
 		}
 	*/
 
-	return { num: store.num }
+	return { num: store.num, quote: store.quote }
 }
 
 

@@ -56,7 +56,12 @@ export default function (state = initialState, action) {
 
         case QUOTE + '_FULFILLED':
             return Object.assign({}, state, {
-                quote: action.payload
+                quote: action.payload.quoteText
+            })
+        
+        case QUOTE + '_REJECTED':
+            return Object.assign({}, state, {
+                quote: "Turn on CORS!"
             })
 
         default:

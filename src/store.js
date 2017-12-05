@@ -10,7 +10,7 @@ import reducer from './ducks/reducer'
 
     *   createStore is used to actually create the store (go figure)
     *   applyMiddleware is used to... apply middleware.
-    *   the order here is important
+    *   the order here is important. Make sure to invoke the middleware!
 
 */
-export default createStore(reducer, applyMiddleware(promiseMiddleware))
+export default createStore(reducer, applyMiddleware(promiseMiddleware()))
